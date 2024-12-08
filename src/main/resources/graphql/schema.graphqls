@@ -1,0 +1,24 @@
+type Household {
+    eircode: String!
+    address: String!
+    numberOccupants: Int!
+    maxOccupants: Int!
+    ownerOccupied: Boolean!
+    pets: [Pet]
+}
+
+type Pet {
+    id: ID!
+    name: String!
+    household: Household!
+}
+
+type Query {
+    getAllHouseholds: [Household]
+    getAllPets: [Pet]
+}
+
+type Mutation {
+    createHousehold(eircode: String!, address: String!, numberOccupants: Int!, maxOccupants: Int!, ownerOccupied: Boolean!): Household
+    createPet(name: String!, householdEircode: String!): Pet
+}
